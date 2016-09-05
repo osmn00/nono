@@ -50,10 +50,10 @@ program
   .usage('[command] [project name]');
 
 
-// 安装 nono 脚手架
+// 初始化 nono 脚手架
 program
-  .command('install')
-  .description('install nono for this folder')
+  .command(' init')
+  .description('init nono for this folder')
   .action(function(cmd, options) {
     if (fs.existsSync(curPath)) {
       files = fs.readdirSync(curPath);
@@ -70,10 +70,10 @@ program
       if (filesNameArr.length > 0) {
         console.log((curPath + '/ 不是一个空目录!').red);
       } else {
-        console.log('install start, please waiting...'.green);
+        console.log('init start, please waiting...'.green);
         shell.exec('git clone https://github.com/osmn00/nono-scaffolding.git');
         removalFiles();
-        console.log('install success!'.green);
+        console.log('init success!'.green);
       }
 
     }
@@ -83,23 +83,6 @@ program
     console.log('  Examples:');
     console.log('');
     console.log('    $ nono install');
-    console.log();
-  });
-
-
-// 初始化操作
-program
-  .command('init')
-  .description('initialize nono environment')
-  .action(function(cmd, options) {
-    console.log('init start, please waiting...'.green);
-    shell.exec('npm install');
-    console.log('init success!'.green);
-  })
-  .on('--help', function() {
-    console.log('  Examples:');
-    console.log('');
-    console.log('    $ nono init');
     console.log();
   });
 

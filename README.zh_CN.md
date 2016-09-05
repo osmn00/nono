@@ -1,8 +1,16 @@
 # NONO 
 
-NONO 是一个基于命令行操作的，用于开发无线单页 web 应用的前端脚手架。 
+Nono 是一个基于命令行操作的，用于开发无线单页 web 应用的前端脚手架。 
 
-最新版本 `1.0.3`
+最新版本 `1.0.4`
+
+特征：
+
+  - Zepto
+  - CommonJS
+  - Single Page
+  - Gulp
+  - WebPack
 
 ## 安装：
 
@@ -31,13 +39,25 @@ $ nono -help
  - **step 2**：为当前文件夹安装 nono 脚手架
  
     ```shell
-    $ nono install
-    ```
-- **step 3**：初始化 nono 脚手架
-
-    ```shell
     $ nono init
     ```
+- **step 3**：安装 npm 依赖
+
+    ```shell
+    $ npm install
+    ```
+
+- **step 4**：开启本地调试环境
+
+    ```shell
+    $ nono dev
+    ```    
+    
+- **step 5**：打开浏览器访问页面，开搞~
+
+    ```
+    http://localhost:3001
+    ```   
 
 ### nono 脚手架的命令行方法
 
@@ -70,6 +90,7 @@ $ nono -help
 
 ```
 --
+  |--.gitignore
   |--node_modules/ 
   |--build/ [发布用文件. 通过 'nono build' 创建]
   |--dist/  [调试用文件. 通过 'nono dev' 创建]
@@ -81,7 +102,6 @@ $ nono -help
      |--pages/   [页面目录]
   |--LICENSE
   |--README.md
-  |--.gitignore
   |--package.json
   |--gulpfile.js
   |--webpack.config.js

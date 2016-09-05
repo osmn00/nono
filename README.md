@@ -2,7 +2,15 @@
 
 Nono is a Front-End Development Scaffolding based command-line operations for mobile single-page web application develop.
 
-Latest version `1.0.3`
+Latest version `1.0.4`
+
+Features：
+
+  - Zepto
+  - CommonJS
+  - Single Page
+  - Gulp
+  - WebPack
 
 ## Installation：
 
@@ -20,7 +28,7 @@ $ sudo npm install -g nono
 $ nono -help
 ```
 
-### Install Nono-scaffolding
+### Install Nono-scaffolding & Develop
 
  - **step 1**：Enter the folder which will to initialize the nono-scaffolding.
 
@@ -28,16 +36,29 @@ $ nono -help
  $ cd your-folder
  ```
  
- - **step 2**：Install nono-scaffolding for your folder.
+ - **step 2**：Initialize nono-scaffolding for your folder.
  
-    ```shell
-    $ nono install
-    ```
-- **step 3**：Initialize nono-scaffolding
-
     ```shell
     $ nono init
     ```
+- **step 3**：Install npm dependencies
+
+    ```shell
+    $ npm install
+    ```
+    
+- **step 4**：start the local development environment
+
+    ```shell
+    $ nono dev
+    ```    
+    
+- **step 5**：Open browser and enjoy it
+
+    ```
+    http://localhost:3001
+    ```   
+    
 
 ### Command For Nono-scaffolding
 
@@ -70,6 +91,7 @@ $ nono -help
 
 ```
 --
+  |--.gitignore
   |--node_modules/ 
   |--build/ [files for publish. Created by 'nono build']
   |--dist/  [files for develop. Created by 'nono dev']
@@ -81,7 +103,6 @@ $ nono -help
      |--pages/   [single pages]
   |--LICENSE
   |--README.md
-  |--.gitignore
   |--package.json
   |--gulpfile.js
   |--webpack.config.js
