@@ -2,7 +2,6 @@ var Promise = require('bluebird');
 var fs = Promise.promisifyAll(require('fs-extra'));
 var root = __dirname.replace(/bin\/lib/, 'bin/');
 
-
 function substitute(str, obj) {
   if (!(Object.prototype.toString.call(str) === '[object String]')) {
     return '';
