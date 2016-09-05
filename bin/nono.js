@@ -70,7 +70,7 @@ program
       if (filesNameArr.length > 0) {
         console.log((curPath + '/ 不是一个空目录!').red);
       } else {
-        console.log('install start ...'.green);
+        console.log('install start, please waiting...'.green);
         shell.exec('git clone https://github.com/osmn00/nono-scaffolding.git');
         removalFiles();
         console.log('install success!'.green);
@@ -92,7 +92,7 @@ program
   .command('init')
   .description('initialize nono environment')
   .action(function(cmd, options) {
-    console.log('init start ...'.green);
+    console.log('init start, please waiting...'.green);
     shell.exec('npm install');
     console.log('init success!'.green);
   })

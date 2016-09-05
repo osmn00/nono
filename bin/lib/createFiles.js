@@ -32,7 +32,7 @@ function generateStructure(type, name) {
           return console.error(err);
         } else {
 
-          if (type === 'p') {
+          if (type === 'page') {
             var pagePath = projectPath + '/index.html';
             var pageTemp = fs.readFileSync(pagePath, 'utf8');
             var pageHtml = substitute(pageTemp, {pageName: name});
@@ -43,8 +43,6 @@ function generateStructure(type, name) {
           } else {
             console.log(('Create success! The new common module is ' + projectPath).green);
           }
-
-
 
         }
       })
