@@ -2,7 +2,7 @@
 
 Nono is a Front-End Development Scaffolding based command-line operations for mobile single-page web application develop.
 
-Latest version `1.0.5`
+Latest version `1.0.6`
 
 Features：
 
@@ -32,9 +32,9 @@ $ nono -help
 
  - **step 1**：Enter the folder which will to initialize the nono-scaffolding.
 
- ```shell
- $ cd your-folder
- ```
+    ```shell
+    $ cd your-folder
+    ```
  
  - **step 2**：Initialize nono-scaffolding for your folder.
  

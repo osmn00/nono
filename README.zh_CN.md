@@ -2,7 +2,7 @@
 
 Nono 是一个基于命令行操作的，用于开发无线单页 web 应用的前端脚手架。 
 
-最新版本 `1.0.5`
+最新版本 `1.0.6`
 
 特征：
 
@@ -32,9 +32,9 @@ $ nono -help
 
  - **step 1**：进入你要安装 nono 脚手架的文件夹
 
- ```shell
- $ cd your-folder
- ```
+    ```shell
+    $ cd your-folder
+    ```
  
  - **step 2**：为当前文件夹安装 nono 脚手架
  
