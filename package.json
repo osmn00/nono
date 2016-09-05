@@ -1,7 +1,7 @@
 {
   "name": "nono",
-  "version": "1.0.7",
-  "description": "Nono is a scaffolding for mobile web single-page application develop, which based command-line operations.",
+  "version": "1.0.8",
+  "description": "Nono is a scaffolding for mobile web single-page application develop, which based on command-line operations.",
   "keywords": [
     "nono",
     "scaffolding",
