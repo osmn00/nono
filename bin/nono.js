@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 var program = require('commander');
 var shell = require('shelljs');
+var colors = require('colors');
 
 var info = require('../package.json');
 var deleteFiles = require('./lib/deleteFiles');
-var createFiles = require('./lib/generateStructure');
+var createFiles = require('./lib/createFiles');
 
 program
   .allowUnknownOption()
   .version(info.version)
   .usage('[command] [project name]');
+
 
 // 初始化操作
 program
@@ -25,21 +27,30 @@ program
     console.log();
   });
 
+
 // add 操作
 program
   .command('add <type> <name>')
   .alias('a')
   .description('add a new page [type p] | component [type c]')
-  .action(function(cmd, options) {
-    var type = cmd;
-    var pageName = options;
+  .action(function(command, name) {
+    var type;
 
-    if (type === 'c' || type === 'p') {
-      createFiles('src/' + type + '/' + pageName, type);
-    } else {
-      console.log('error!');
-      return false;
+    switch (command) {
+      case 'c' :
+        type = 'common';
+        break;
+
+      case 'p' :
+        type = 'page';
+        break;
+
+      default :
+        console.log(('Not allowed Type! Please use "c" or "p".').red);
+        return false;
     }
+
+    createFiles(type, name);
   })
   .on('--help', function() {
     console.log('  Examples:');
@@ -51,22 +62,32 @@ program
     console.log();
   });
 
+
 // delete 操作
 program
   .command('del <type> <name>')
   .alias('d')
   .description('delete a page [type p] | component [type c]')
-  .action(function(cmd, options) {
-    var type = cmd;
-    var pageName = options;
+  .action(function(command, name) {
+    var type;
 
-    if (type === 'c' || type === 'p') {
-      deleteFiles('src/' + type + '/' + pageName);
-      console.log('Delete success!')
-    } else {
-      console.log('error!');
-      return false;
+    switch (command) {
+      case 'c' :
+        type = 'common';
+        break;
+
+      case 'p' :
+        type = 'page';
+        break;
+
+      default :
+        console.log(('Not allowed Type! Please use "c" or "p".').red);
+        return false;
     }
+
+    deleteFiles('src/' + type + 's/' + name);
+
+    console.log('Delete success!'.green);
   })
   .on('--help', function() {
     console.log('  Examples:');
@@ -77,6 +98,7 @@ program
     console.log('    $ nono del c slider');
     console.log();
   });
+
 
 // 开启调试环境操作
 program
@@ -91,6 +113,7 @@ program
     console.log('    $ nono dev');
     console.log();
   });
+
 
 // 开启调试环境操作
 program

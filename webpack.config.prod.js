@@ -1,14 +1,32 @@
 'use strict';
 
 /**
- * 开发环境
+ * 打包环境
  */
 
 var glob = require('glob');
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var folderPath = __dirname;
+var htmlFiles;
+var plugins = [
+
+  // 将页面所需的 CSS 单独打包输出
+  new ExtractTextPlugin('[name]/index.css'),
+
+  // 压缩代码
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false
+    }
+  }),
+
+  // 跳过编译时出错的代码并记录，
+  // 使编译后运行时的包不会发生错误。
+  new webpack.NoErrorsPlugin()
+];
 
 
 function merge(obj, src) {
@@ -32,20 +50,44 @@ function getEntries() {
   }, {});
 }
 
+// 获取 HTML 文件列表
+function getHTMLFiles() {
+  var htmlFiles = glob.sync('./src/pages/*/index.html');
+
+  return htmlFiles.reduce(function(memo, file) {
+    var name = /.*\/(.*?)\/index\.html/.exec(file)[1];
+
+    memo[name] = './src/pages/' + name + '/index.html';
+
+    return memo;
+  }, {});
+}
+
+htmlFiles = getHTMLFiles();
+
+for (var htmlFileName in htmlFiles) {
+  var conf = {
+    filename: htmlFileName + '/index.html',
+    template: htmlFiles[htmlFileName],
+    inject: true,
+    minify: {
+      removeComments: true,
+      collapseWhitespace: false
+    },
+    hash: false
+  };
+
+  plugins.push(new HtmlWebpackPlugin(conf));
+}
+
 module.exports = {
-  watch: true, // 兼容模式, 增量更新
-
-  profile: true,
-
-  cache: true,
-
-  // devtool: 'source-map',
-  devtool: 'eval',
-
-  entry: getEntries(),
+  entry: merge(getEntries(), {
+    'mbase': './lib/mbase/index.js',
+    'zepto': './lib/zepto/index.js'
+  }),
 
   output: {
-    path: path.join(folderPath, 'dist'), // 输出路径
+    path: path.join(folderPath, 'build'), // 输出路径
     filename: '[name]/index.js' // 输出名称或名称 pattern
   },
 
@@ -71,19 +113,8 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', './index.js'],  // 省略扩展名
-    alias: {
-      'zepto': path.resolve(folderPath, './node_modules/zepto/dist/zepto.min.js')
-    }
+    extensions: ['', '.js', './index.js'] // 省略扩展名
   },
 
-  plugins: [
-
-    // 将页面所需的 CSS 单独打包输出
-    new ExtractTextPlugin('[name]/index.css'),
-
-    // 跳过编译时出错的代码并记录，
-    // 使编译后运行时的包不会发生错误。
-    new webpack.NoErrorsPlugin()
-  ]
+  plugins: plugins
 };
