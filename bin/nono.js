@@ -52,7 +52,7 @@ program
 
 // 初始化 nono 脚手架
 program
-  .command(' init')
+  .command('init')
   .description('init nono for this folder')
   .action(function(cmd, options) {
     if (fs.existsSync(curPath)) {
