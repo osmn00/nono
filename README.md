@@ -2,7 +2,7 @@
 
 Nono is a scaffolding for mobile web single-page application develop, which based command-line operations.
 
-Latest version `1.0.6`
+Latest version `1.0.7`
 
 Features：
 
