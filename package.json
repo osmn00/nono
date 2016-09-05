@@ -1,7 +1,14 @@
 {
   "name": "nono",
   "version": "1.0.3",
-  "description": "",
+  "description": "Nono is a Front-End Development Scaffolding based command-line operations for mobile single-page web application develop.",
+  "keywords": [
+    "nono",
+    "scaffolding",
+    "font-end",
+    "command-line",
+    "zepto"
+  ],
   "main": "index.js",
   "bin": {
     "nono": "bin/nono.js"

@@ -1,6 +1,6 @@
 # NONO 
 
-NONO is a Front-End Development Scaffolding based command-line operations for mobile single-page web application develop.
+Nono is a Front-End Development Scaffolding based command-line operations for mobile single-page web application develop.
 
 Latest version `1.0.3`
 
