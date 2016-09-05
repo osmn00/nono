@@ -82,7 +82,7 @@ program
   .on('--help', function() {
     console.log('  Examples:');
     console.log('');
-    console.log('    $ nono install');
+    console.log('    $ nono init');
     console.log();
   });
 
